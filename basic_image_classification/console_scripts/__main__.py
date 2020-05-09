@@ -1,5 +1,7 @@
 import logging
 
+from numpy import array
+
 from neural_net.neural_network import NeuralNetwork
 from neural_net.training_data import TRAINING_INPUTS, TRAINING_OUTPUTS
 
@@ -17,7 +19,12 @@ def train():
 
 
 def solve():
-    pass
+    a = int(input("Input 1: "))
+    b = int(input("Input 2: "))
+    c = int(input("Input 3: "))
+    LOGGER.debug("Solving with input: {a=%d, b=%d, c=%d}" % (a, b, c))
+    result = NEURAL_NETWORK.solve(array([a, b, c]))
+    print(int(round(result[0])))
 
 
 if __name__ == '__main__':
