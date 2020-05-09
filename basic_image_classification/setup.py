@@ -22,9 +22,9 @@ setuptools.setup(
     },
     entry_points={
         'console_scripts': [
-            'bic=console_scripts.__main__:main',
-            'bic-train=console_scripts.__main__:train',
-            'bic-solve=console_scripts.__main__:solve',
+            'bic=basic_image_classification.console_scripts.__main__:main',
+            'bic-train=basic_image_classification.console_scripts.__main__:train',
+            'bic-solve=basic_image_classification.console_scripts.__main__:solve',
         ]
     },
 )

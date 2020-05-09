@@ -2,8 +2,8 @@ import logging
 
 from numpy import array
 
-from neural_net.neural_network import NeuralNetwork
-from neural_net.training_data import TRAINING_INPUTS, TRAINING_OUTPUTS
+from simple_neural_net.neural_net.neural_network import NeuralNetwork
+from simple_neural_net.neural_net.training_data import TRAINING_INPUTS, TRAINING_OUTPUTS
 
 NEURAL_NETWORK = NeuralNetwork()
 LOGGER = logging.getLogger(__name__)

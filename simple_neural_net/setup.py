@@ -22,9 +22,9 @@ setuptools.setup(
     },
     entry_points={
         'console_scripts': [
-            'snn=console_scripts.__main__:main',
-            'snn-train=console_scripts.__main__:train',
-            'snn-solve=console_scripts.__main__:solve',
+            'snn=simple_neural_net.console_scripts.__main__:main',
+            'snn-train=simple_neural_net.console_scripts.__main__:train',
+            'snn-solve=simple_neural_net.console_scripts.__main__:solve',
         ]
     },
 )

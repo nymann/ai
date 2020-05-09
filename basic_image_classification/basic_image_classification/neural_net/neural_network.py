@@ -2,12 +2,11 @@ import numpy
 import tensorflow as tf
 from tensorflow import keras
 
-from neural_net.training_data import TEST_IMAGES, TEST_LABELS, TRAIN_IMAGES, TRAIN_LABELS
+from basic_image_classification.neural_net.training_data import TEST_IMAGES, TEST_LABELS, TRAIN_IMAGES, TRAIN_LABELS, \
+    CLASS_NAMES
 
 
 class NeuralNetwork:
-    class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
-                   'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
     def __init__(self):
         self.model = keras.Sequential([
@@ -24,10 +23,10 @@ class NeuralNetwork:
         self.model.fit(TRAIN_IMAGES, TRAIN_LABELS, epochs=epochs)
         test_loss, test_acc = self.model.evaluate(TEST_IMAGES, TEST_LABELS, verbose=2)
 
-        print('\nTest accuracy:', test_acc)
+        print(f"Test accuracy: {test_acc}")
 
-    def solve(self):
-        probability_model = tf.keras.Sequential([self.model,
-                                                 tf.keras.layers.Softmax()])
-        predictions = probability_model.predict(TEST_IMAGES)
-        return numpy.argmax(predictions[0])
+    def solve(self, img):
+        probability_model = tf.keras.Sequential([self.model, tf.keras.layers.Softmax()])
+        predictions_single = probability_model.predict(img)
+        highest_confidence_item = int(numpy.argmax(predictions_single[0]))
+        return CLASS_NAMES[highest_confidence_item]

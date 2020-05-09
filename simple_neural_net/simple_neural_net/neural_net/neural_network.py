@@ -39,14 +39,14 @@ class NeuralNetwork:
         """
         for iteration in range(training_iterations):
             # Pass training set through the neural network
-            prediction = self.solve(training_inputs)
+            output = self.solve(training_inputs)
 
             # Calculate the error rate
-            error = training_outputs - prediction
+            error = training_outputs - output
 
             # Multiply error by input and gradient of the sigmoid function
             # Less confident weights are adjusted more through the nature of the function
-            adjustments = dot(training_inputs.T, error * self.sigmoid_derivative(prediction))
+            adjustments = dot(training_inputs.T, error * self.sigmoid_derivative(output))
 
             # Adjust synaptic weights
             self.synaptic_weights += adjustments
