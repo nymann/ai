@@ -3,14 +3,6 @@ import pickle
 from numpy import random, dot, exp
 
 
-def sigmoid(x):
-    """
-    Takes in weighted sum of the inputs and normalizes
-    them through between 0 and 1 through a sigmoid function
-    """
-    return 1 / (1 + exp(-x))
-
-
 class NeuralNetwork:
 
     def __init__(self):
@@ -31,6 +23,14 @@ class NeuralNetwork:
         calculate necessary weight adjustments
         """
         return x * (1 - x)
+
+    @staticmethod
+    def sigmoid(x):
+        """
+        Takes in weighted sum of the inputs and normalizes
+        them through between 0 and 1 through a sigmoid function
+        """
+        return 1 / (1 + exp(-x))
 
     def train(self, training_inputs, training_outputs, training_iterations):
         """
@@ -59,5 +59,5 @@ class NeuralNetwork:
         """
 
         inputs = inputs.astype(float)
-        output = sigmoid(dot(inputs, self.synaptic_weights))
+        output = self.sigmoid(dot(inputs, self.synaptic_weights))
         return output
